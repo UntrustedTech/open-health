@@ -1,0 +1,126 @@
+name: health_app
+description: "A simple, modern personal health tracker"
+publish_to: 'none'
+
+version: 1.0.0+127
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  provider: ^6.1.5+1
+  shared_preferences: ^2.5.6
+  intl: ^0.20.3
+  health: ^13.3.2
+  device_info_plus: ^13.3.0
+  flutter_animate: ^4.5.2
+  home_widget: ^0.10.0
+  flutter_local_notifications: ^23.0.0
+  timezone: ^0.11.1
+  flutter_timezone: ^5.1.1
+  geolocator: ^14.1.1
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+  flutter_secure_storage: ^11.2.0
+  cryptography: ^2.9.0
+  path_drawing: ^1.0.1
+  wakelock_plus: ^1.8.0
+  image_picker: ^1.2.4
+  image: ^4.12.0
+  file_picker: ^13.1.0
+  share_plus: ^13.3.1
+  pdf: ^3.13.1
+  path_provider: ^2.1.6
+  csv: ^8.0.0
+  package_info_plus: ^10.2.2
+  local_auth: ^3.0.2
+  mobile_scanner: ^7.4.2
+  workmanager: ^0.10.10
+  barcode_widget: ^2.0.4
+  screen_brightness: ^2.1.11
+  barcode: ^2.2.9
+  archive: ^4.5.2
+  cupertino_icons: ^2.0.0
+  flutter_localizations:
+    sdk: flutter
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.8
+  shared_preferences_platform_interface: ^2.4.2
+  flutter_secure_storage_platform_interface: ^2.1.1
+
+dependency_overrides:
+  # Patched so the GPS workout notification shows (see
+  # third_party/geolocator_android/PATCHED.md).
+  geolocator_android:
+    path: third_party/geolocator_android
+
+flutter:
+  uses-material-design: true
+
+  # Inter, with its Display cut for sizes of 20 pt and up, as SF Pro does
+  # on iPhone (SIL Open Font License). See DESIGN.md.
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+          weight: 800
+    - family: InterDisplay
+      fonts:
+        - asset: assets/fonts/InterDisplay-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/InterDisplay-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/InterDisplay-ExtraBold.ttf
+          weight: 800
+  assets:
+    # Health's own license (PolyForm Noncommercial), shown first in Acknowledgements.
+    - LICENSE
+    - assets/fonts/Inter-LICENSE.txt
+    # Exercise text (MIT, hasaneyldrm/exercises-dataset; no media) and body
+    # outlines (MIT, melihcolpan/MuscleMap). Exercise photos are from
+    # free-exercise-db (public domain).
+    - assets/l10n/
+    - assets/data/exercises.json
+    - assets/data/body_paths.json
+    - assets/data/EXERCISES-LICENSE.txt
+    - assets/data/MUSCLEMAP-LICENSE.txt
+    - assets/data/exercise_media.json
+    - assets/data/EXERCISE-MEDIA-LICENSE.txt
+    - assets/data/OPEN-FOOD-FACTS-LICENSE.txt
+    - assets/exercise_media/
+
+# App icon: `dart run flutter_launcher_icons`
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: assets/branding/icon.png
+  adaptive_icon_background: assets/branding/icon_background.png
+  adaptive_icon_foreground: assets/branding/icon_foreground.png
+  adaptive_icon_monochrome: assets/branding/icon_monochrome.png
+  min_sdk_android: 26
+
+# Launch screen: `dart run flutter_native_splash:create`
+flutter_native_splash:
+  color: "#1C1D21"
+  image: assets/branding/splash.png
+  android_12:
+    color: "#1C1D21"
+    image: assets/branding/splash.png

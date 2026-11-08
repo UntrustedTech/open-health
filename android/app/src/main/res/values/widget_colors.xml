@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The app's own surfaces, until the app sends its theme. -->
+<resources>
+    <color name="widget_background">#FFFFFFFF</color>
+    <color name="widget_text">#FF0F1115</color>
+    <color name="widget_secondary">#FF5B6170</color>
+    <color name="widget_button">#1F0F1115</color>
+    <color name="widget_track">#1F0F1115</color>
+    <color name="widget_heat_empty">#140F1115</color>
+</resources>

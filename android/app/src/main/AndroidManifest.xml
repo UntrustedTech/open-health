@@ -1,0 +1,971 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Health Connect: reads health data; writes only workouts recorded in
+         this app, and only if the user turns on "Save to Health Connect". -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <!-- Android 16 Live Updates: workout, rest and fasting in the status bar chip / Now Bar. -->
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.health.READ_STEPS"/>
+    <uses-permission android:name="android.permission.health.READ_DISTANCE"/>
+    <uses-permission android:name="android.permission.health.READ_ACTIVE_CALORIES_BURNED"/>
+    <uses-permission android:name="android.permission.health.READ_EXERCISE"/>
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE"/>
+    <uses-permission android:name="android.permission.health.READ_RESTING_HEART_RATE"/>
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE_VARIABILITY"/>
+    <uses-permission android:name="android.permission.health.READ_OXYGEN_SATURATION"/>
+    <uses-permission android:name="android.permission.health.READ_BLOOD_PRESSURE"/>
+    <uses-permission android:name="android.permission.health.READ_BLOOD_GLUCOSE"/>
+    <uses-permission android:name="android.permission.health.READ_SLEEP"/>
+    <uses-permission android:name="android.permission.health.READ_WEIGHT"/>
+    <uses-permission android:name="android.permission.health.READ_HYDRATION"/>
+    <uses-permission android:name="android.permission.health.READ_NUTRITION"/>
+    <uses-permission android:name="android.permission.health.READ_BODY_FAT"/>
+    <uses-permission android:name="android.permission.health.READ_RESPIRATORY_RATE"/>
+    <uses-permission android:name="android.permission.health.READ_BODY_TEMPERATURE"/>
+    <uses-permission android:name="android.permission.health.READ_BASAL_METABOLIC_RATE"/>
+    <uses-permission android:name="android.permission.health.READ_FLOORS_CLIMBED"/>
+    <uses-permission android:name="android.permission.health.READ_LEAN_BODY_MASS"/>
+    <uses-permission android:name="android.permission.health.READ_BODY_WATER_MASS"/>
+    <uses-permission android:name="android.permission.health.READ_SKIN_TEMPERATURE"/>
+    <!-- Cycle Tracking: "Import from Health Connect" -->
+    <uses-permission android:name="android.permission.health.READ_MENSTRUATION"/>
+    <!-- Profile: "Fill from Health Connect" -->
+    <uses-permission android:name="android.permission.health.READ_HEIGHT"/>
+    <!-- Saving workouts asks for read and write of total calories. -->
+    <uses-permission android:name="android.permission.health.READ_TOTAL_CALORIES_BURNED"/>
+    <!-- Lets the user allow reading data older than 30 days. -->
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_HISTORY"/>
+    <!-- Background sync, when the user turns it on in Health Connect settings. -->
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND"/>
+    <uses-permission android:name="android.permission.health.WRITE_EXERCISE"/>
+    <uses-permission android:name="android.permission.health.WRITE_DISTANCE"/>
+    <uses-permission android:name="android.permission.health.WRITE_TOTAL_CALORIES_BURNED"/>
+
+    <!-- GPS workouts: location while the workout runs, kept alive by a
+         foreground service with a visible notification. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+
+    <!-- Reminders, rest timers and the workout notification. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <!-- Internet: street-map images (if chosen) and food lookups on Open Food Facts. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:label="Health"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- The window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <!-- Health Connect opens this to show why the app needs access. -->
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE"/>
+            </intent-filter>
+        </activity>
+        <!-- App icons: start. -->
+        <!-- The app's icon in the launcher: one entry per icon people can
+             choose (Appearance → App Icon), only the chosen one enabled.
+             See AppIcons.kt. Written by tool/make_app_icons.py. -->
+        <activity-alias
+            android:name=".IconDefault"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixGraphiteIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_graphite_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixGraphiteWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_graphite_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixGraphiteNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_graphite_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixGraphiteGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_graphite_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixGraphitePink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_graphite_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixWhiteIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_white_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixWhiteBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_white_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixWhiteNavy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_white_navy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixWhiteNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_white_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixWhitePink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_white_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOriginalChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_original_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOriginalWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_original_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOriginalBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_original_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOriginalGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_original_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBlackPink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_black_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixNavyPink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_navy_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixPaperIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_paper_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixPaperBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_paper_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixPaperNavy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_paper_navy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixPaperNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_paper_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixPaperPink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_paper_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixMintIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_mint_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixMintBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_mint_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixMintNavy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_mint_navy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixSunsetIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_sunset_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixSunsetWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_sunset_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixSunsetBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_sunset_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixSunsetNavy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_sunset_navy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixForestChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_forest_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixForestWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_forest_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixForestBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_forest_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixForestGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_forest_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOceanChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_ocean_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOceanWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_ocean_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOceanBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_ocean_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixOceanGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_ocean_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBerryChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_berry_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBerryWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_berry_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixBerryGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_berry_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearChampagne"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_champagne"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearIris"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_iris"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearWhite"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_white"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearBlack"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_black"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearNavy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_navy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearNeon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_neon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearGold"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_gold"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconMixClearPink"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mix_clear_pink"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeCartoon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_cartoon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeBubblegum"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_bubblegum"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeComicPop"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_comic_pop"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeJungleToon"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_jungle_toon"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeWiggle"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_wiggle"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeMidnight"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_midnight"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeTerminal"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_terminal"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeNotebook"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_notebook"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeSketchbook"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_sketchbook"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeBlueprint"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_blueprint"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeStorybook"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_storybook"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeCyberpunk"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_cyberpunk"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeDaydream"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_daydream"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name=".IconThemeGroovy"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_theme_groovy"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <!-- App icons: end. -->
+        <!-- Android 14+: link from Health Connect settings back to this app. -->
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:targetActivity=".MainActivity"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE"/>
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS"/>
+            </intent-filter>
+        </activity-alias>
+        <!-- Home screen widgets. -->
+        <receiver android:name=".ActivityWidget" android:exported="true" android:label="Activity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_activity_info"/>
+        </receiver>
+        <receiver android:name=".WaterWidget" android:exported="true" android:label="Water">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_water_info"/>
+        </receiver>
+        <receiver android:name=".WorkoutWidget" android:exported="true" android:label="Workouts">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_workout_info"/>
+        </receiver>
+        <receiver android:name=".ProgressWidget" android:exported="true" android:label="Progress">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_progress_info"/>
+        </receiver>
+        <receiver android:name=".FastingWidget" android:exported="true" android:label="Fasting">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fasting_info"/>
+        </receiver>
+        <!-- Runs the widget's "+250 ml" button in the background. -->
+        <receiver android:name="es.antonborri.home_widget.HomeWidgetBackgroundReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="es.antonborri.home_widget.action.BACKGROUND"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Buttons on notifications (a habit's Done). -->
+        <receiver
+            android:exported="false"
+            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"/>
+        <!-- Scheduled reminders (and restoring them after a reboot). -->
+        <receiver
+            android:exported="false"
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"/>
+        <receiver
+            android:exported="false"
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+        <!-- Needed by the Flutter tool; don't delete. -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+    <!-- Package visibility: Flutter's text-processing menu and Health Connect. -->
+    <queries>
+        <!-- Check whether Health Connect is installed. -->
+        <package android:name="com.google.android.apps.healthdata"/>
+        <intent>
+            <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Open an update's download in the browser (url_launcher). -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+    </queries>
+</manifest>

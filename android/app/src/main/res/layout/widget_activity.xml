@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/rings"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:contentDescription="Activity rings"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/move_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.04"
+            android:text="MOVE"
+            android:textColor="#FF4D7D"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/move"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/widget_text"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/exercise_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.04"
+            android:text="EXERCISE"
+            android:textColor="#2EC7A5"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/widget_text"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/steps_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.04"
+            android:text="STEPS"
+            android:textColor="#7C8CFF"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/widget_text"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Written by tool/make_app_icons.py. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+  <background android:drawable="@android:color/transparent"/>
+  <foreground>
+      <inset
+          android:drawable="@drawable/ic_icon_line_black"
+          android:inset="16%" />
+  </foreground>
+  <monochrome>
+      <inset
+          android:drawable="@drawable/ic_launcher_monochrome"
+          android:inset="16%" />
+  </monochrome>
+</adaptive-icon>

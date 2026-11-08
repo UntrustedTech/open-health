@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Written by tool/make_app_icons.py. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="1024" android:viewportHeight="1024">
+  <path android:pathData="M0,0h1024v1024h-1024z" android:fillColor="#F7F4EC">
+  </path>
+  <path android:pathData="M78,0h4v1024h-4zM158,0h4v1024h-4zM238,0h4v1024h-4zM318,0h4v1024h-4zM398,0h4v1024h-4zM478,0h4v1024h-4zM558,0h4v1024h-4zM638,0h4v1024h-4zM718,0h4v1024h-4zM798,0h4v1024h-4zM878,0h4v1024h-4zM958,0h4v1024h-4zM0,78h1024v4h-1024zM0,158h1024v4h-1024zM0,238h1024v4h-1024zM0,318h1024v4h-1024zM0,398h1024v4h-1024zM0,478h1024v4h-1024zM0,558h1024v4h-1024zM0,638h1024v4h-1024zM0,718h1024v4h-1024zM0,798h1024v4h-1024zM0,878h1024v4h-1024zM0,958h1024v4h-1024z" android:fillColor="#33585248"/>
+</vector>

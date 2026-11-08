@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Resources only referenced by name from Dart (the notification icon) are
+     invisible to the release build's resource shrinker; keep them, or
+     notifications fail to initialise and never show. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_stat_health" />

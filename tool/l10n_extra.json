@@ -1,0 +1,296 @@
+{
+ "Activity: {0} training days in the last {1} weeks": {
+  "de": "Aktivität: {0} Trainingstage in den letzten {1} Wochen",
+  "es": "Actividad: {0} días de entrenamiento en las últimas {1} semanas",
+  "fr": "Activité : {0} jours d’entraînement sur les {1} dernières semaines",
+  "ja": "アクティビティ：過去{1}週間のトレーニング日数 {0}日",
+  "zh": "活动：过去 {1} 周训练 {0} 天"
+ },
+ "Activity: {0} training days in the past year": {
+  "de": "Aktivität: {0} Trainingstage im letzten Jahr",
+  "es": "Actividad: {0} días de entrenamiento en el último año",
+  "fr": "Activité : {0} jours d’entraînement sur l’année écoulée",
+  "ja": "アクティビティ：過去1年のトレーニング日数 {0}日",
+  "zh": "活动：过去一年训练 {0} 天"
+ },
+ "Advanced: one large meal and a snack.": {
+  "de": "Fortgeschritten: eine große Mahlzeit und ein Snack.",
+  "es": "Avanzado: una comida grande y un tentempié.",
+  "fr": "Avancé : un grand repas et une collation.",
+  "ja": "上級：しっかりした食事1回と軽食1回。",
+  "zh": "进阶：一顿正餐加一份零食。"
+ },
+ "Also good: {0}": {
+  "de": "Auch gut: {0}",
+  "es": "También bien: {0}",
+  "fr": "Aussi adapté : {0}",
+  "ja": "こちらもおすすめ：{0}",
+  "zh": "也不错：{0}"
+ },
+ "Best day: {0} with {1} steps{2}.": {
+  "de": "Bester Tag: {0} mit {1} Schritten{2}.",
+  "es": "Mejor día: {0} con {1} pasos{2}.",
+  "fr": "Meilleure journée : {0} avec {1} pas{2}.",
+  "ja": "ベストな日：{0}（{1}歩{2}）。",
+  "zh": "最佳一天：{0}，{1} 步{2}。"
+ },
+ "Calories: {0} eaten of {1}, {2} {3}": {
+  "de": "Kalorien: {0} von {1} gegessen, {2} {3}",
+  "es": "Calorías: {0} consumidas de {1}, {2} {3}",
+  "fr": "Calories : {0} consommées sur {1}, {2} {3}",
+  "ja": "カロリー：{1}中{0}摂取、{2} {3}",
+  "zh": "热量：已摄入 {0}，目标 {1}，{2} {3}"
+ },
+ "Each side: {0} {1}": {
+  "de": "Pro Seite: {0} {1}",
+  "es": "Cada lado: {0} {1}",
+  "fr": "De chaque côté : {0} {1}",
+  "ja": "片側：{0} {1}",
+  "zh": "每侧：{0} {1}"
+ },
+ "First time: pick a weight you can lift with good form.": {
+  "de": "Erstes Mal: Wähle ein Gewicht, das du sauber heben kannst.",
+  "es": "Primera vez: elige un peso que puedas levantar con buena técnica.",
+  "fr": "Première fois : choisissez une charge que vous pouvez soulever avec une bonne technique.",
+  "ja": "初回：正しいフォームで持ち上げられる重さを選びましょう。",
+  "zh": "第一次：选择一个能以正确姿势举起的重量。"
+ },
+ "Last time: {0}": {
+  "de": "Letztes Mal: {0}",
+  "es": "Última vez: {0}",
+  "fr": "La dernière fois : {0}",
+  "ja": "前回：{0}",
+  "zh": "上次：{0}"
+ },
+ "Macros: protein {0}, carbs {1}, fat {2} grams": {
+  "de": "Makros: Eiweiß {0}, Kohlenhydrate {1}, Fett {2} Gramm",
+  "es": "Macros: proteína {0}, carbohidratos {1}, grasa {2} gramos",
+  "fr": "Macros : protéines {0}, glucides {1}, lipides {2} grammes",
+  "ja": "マクロ：たんぱく質 {0}、炭水化物 {1}、脂質 {2} グラム",
+  "zh": "宏量营养素：蛋白质 {0}、碳水 {1}、脂肪 {2} 克"
+ },
+ "Next: {0}": {
+  "de": "Als Nächstes: {0}",
+  "es": "Siguiente: {0}",
+  "fr": "Ensuite : {0}",
+  "ja": "次：{0}",
+  "zh": "下一个：{0}"
+ },
+ "Next: {0} {1}": {
+  "de": "Als Nächstes: {0} {1}",
+  "es": "Siguiente: {0} {1}",
+  "fr": "Ensuite : {0} {1}",
+  "ja": "次：{0} {1}",
+  "zh": "下一个：{0} {1}"
+ },
+ "Next: {0}, {1}": {
+  "de": "Als Nächstes: {0}, {1}",
+  "es": "Siguiente: {0}, {1}",
+  "fr": "Ensuite : {0}, {1}",
+  "ja": "次：{0}、{1}",
+  "zh": "下一个：{0}，{1}"
+ },
+ "Nothing selected: the library shows every exercise.": {
+  "de": "Nichts ausgewählt: Die Bibliothek zeigt alle Übungen.",
+  "es": "Nada seleccionado: la biblioteca muestra todos los ejercicios.",
+  "fr": "Rien de sélectionné : la bibliothèque affiche tous les exercices.",
+  "ja": "未選択：ライブラリにすべてのエクササイズが表示されます。",
+  "zh": "未选择：动作库将显示所有动作。"
+ },
+ "Nutrition facts: {0} calories, {1} protein, {2} carbohydrates, {3} fat": {
+  "de": "Nährwerte: {0} Kalorien, {1} Eiweiß, {2} Kohlenhydrate, {3} Fett",
+  "es": "Información nutricional: {0} calorías, {1} de proteína, {2} de carbohidratos, {3} de grasa",
+  "fr": "Valeurs nutritionnelles : {0} calories, {1} de protéines, {2} de glucides, {3} de lipides",
+  "ja": "栄養成分：{0}キロカロリー、たんぱく質 {1}、炭水化物 {2}、脂質 {3}",
+  "zh": "营养成分：{0} 千卡，蛋白质 {1}，碳水化合物 {2}，脂肪 {3}"
+ },
+ "This week: {0}{1} minutes, {2} workouts": {
+  "de": "Diese Woche: {0}{1} Minuten, {2} Trainings",
+  "es": "Esta semana: {0}{1} minutos, {2} entrenamientos",
+  "fr": "Cette semaine : {0}{1} minutes, {2} séances",
+  "ja": "今週：{0}{1}分、ワークアウト{2}回",
+  "zh": "本周：{0}{1} 分钟，{2} 次训练"
+ },
+ "Recap": {
+  "de": "Rückblick",
+  "es": "Resumen",
+  "fr": "Bilan",
+  "ja": "振り返り",
+  "zh": "回顾"
+ },
+ "Report": {
+  "de": "Bericht",
+  "es": "Informe",
+  "fr": "Rapport",
+  "ja": "レポート",
+  "zh": "报告"
+ },
+ "Outline Colour": {
+  "de": "Umrissfarbe",
+  "es": "Color del contorno",
+  "fr": "Couleur du contour",
+  "ja": "枠線の色",
+  "zh": "轮廓颜色"
+ },
+ "Pick an outline above to see it.": {
+  "de": "Wähle oben einen Umriss, um ihn zu sehen.",
+  "es": "Elige un contorno arriba para verlo.",
+  "fr": "Choisissez un contour ci-dessus pour le voir.",
+  "ja": "上で枠線を選ぶと表示されます。",
+  "zh": "在上方选择轮廓即可看到效果。"
+ },
+ "{0} outline": {
+  "de": "Umriss: {0}",
+  "es": "Contorno: {0}",
+  "fr": "Contour : {0}",
+  "ja": "枠線：{0}",
+  "zh": "轮廓：{0}"
+ },
+ "Ink": {
+  "de": "Tinte",
+  "es": "Tinta",
+  "fr": "Encre",
+  "ja": "インク",
+  "zh": "墨色"
+ },
+ "Yellow": {
+  "de": "Gelb",
+  "es": "Amarillo",
+  "fr": "Jaune",
+  "ja": "イエロー",
+  "zh": "黄色"
+ },
+ "Lavender": {
+  "de": "Lavendel",
+  "es": "Lavanda",
+  "fr": "Lavande",
+  "ja": "ラベンダー",
+  "zh": "薰衣草"
+ },
+ "Paper": {
+  "de": "Papier",
+  "es": "Papel",
+  "fr": "Papier",
+  "ja": "ペーパー",
+  "zh": "纸白"
+ },
+ "Peach": {
+  "de": "Pfirsich",
+  "es": "Melocotón",
+  "fr": "Pêche",
+  "ja": "ピーチ",
+  "zh": "蜜桃"
+ },
+ "Rose": {
+  "de": "Rosé",
+  "es": "Rosa",
+  "fr": "Rose",
+  "ja": "ローズ",
+  "zh": "玫瑰"
+ },
+ "Sage": {
+  "de": "Salbei",
+  "es": "Salvia",
+  "fr": "Sauge",
+  "ja": "セージ",
+  "zh": "鼠尾草"
+ },
+ "Sand": {
+  "de": "Sand",
+  "es": "Arena",
+  "fr": "Sable",
+  "ja": "サンド",
+  "zh": "沙色"
+ },
+ "Sky": {
+  "de": "Himmel",
+  "es": "Cielo",
+  "fr": "Ciel",
+  "ja": "スカイ",
+  "zh": "天空"
+ },
+ "Slate": {
+  "de": "Schiefer",
+  "es": "Pizarra",
+  "fr": "Ardoise",
+  "ja": "スレート",
+  "zh": "石板"
+ },
+ "Thick": {
+  "de": "Dick",
+  "es": "Grueso",
+  "fr": "Épais",
+  "ja": "太い",
+  "zh": "粗"
+ },
+ "Thin": {
+  "de": "Dünn",
+  "es": "Fino",
+  "fr": "Fin",
+  "ja": "細い",
+  "zh": "细"
+ },
+ "Change the backup folder": {
+  "de": "Backup-Ordner ändern",
+  "es": "Cambiar la carpeta de copias",
+  "fr": "Changer le dossier de sauvegarde",
+  "ja": "バックアップフォルダを変更",
+  "zh": "更改备份文件夹"
+ },
+ "Rest over": {
+  "de": "Pause vorbei",
+  "es": "Descanso terminado",
+  "fr": "Repos terminé",
+  "ja": "休憩終了",
+  "zh": "休息结束"
+ },
+ "Rest over: next set": {
+  "de": "Pause vorbei: nächster Satz",
+  "es": "Descanso terminado: siguiente serie",
+  "fr": "Repos terminé : série suivante",
+  "ja": "休憩終了：次のセット",
+  "zh": "休息结束：下一组"
+ },
+ "Time for your next set.": {
+  "de": "Zeit für deinen nächsten Satz.",
+  "es": "Es hora de tu siguiente serie.",
+  "fr": "C’est l’heure de votre série suivante.",
+  "ja": "次のセットの時間です。",
+  "zh": "该做下一组了。"
+ },
+ "Brightness": {
+  "de": "Helligkeit",
+  "es": "Brillo",
+  "fr": "Luminosité",
+  "ja": "明るさ",
+  "zh": "亮度"
+ },
+ "Colour wheel": {
+  "de": "Farbrad",
+  "es": "Rueda de color",
+  "fr": "Roue chromatique",
+  "ja": "カラーホイール",
+  "zh": "色轮"
+ },
+ "Custom Colour": {
+  "de": "Eigene Farbe",
+  "es": "Color personalizado",
+  "fr": "Couleur personnalisée",
+  "ja": "カスタムカラー",
+  "zh": "自定义颜色"
+ },
+ "Custom colour": {
+  "de": "Eigene Farbe",
+  "es": "Color personalizado",
+  "fr": "Couleur personnalisée",
+  "ja": "カスタムカラー",
+  "zh": "自定义颜色"
+ },
+ "Page Colour": {
+  "de": "Seitenfarbe",
+  "es": "Color de página",
+  "fr": "Couleur de la page",
+  "ja": "ページの色",
+  "zh": "页面颜色"
+ }
+}

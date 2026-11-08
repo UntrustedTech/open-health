@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>CFBundleDisplayName</key>
+		<string>Health</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>health_app</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(FLUTTER_BUILD_NAME)</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>CFBundleVersion</key>
+		<string>$(FLUTTER_BUILD_NUMBER)</string>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
+		<key>NSCameraUsageDescription</key>
+		<string>Health uses the camera to scan food barcodes and device QR codes, and to take progress photos.</string>
+		<key>NSFaceIDUsageDescription</key>
+		<string>App Lock uses Face ID to keep your health data private.</string>
+		<key>NSHealthShareUsageDescription</key>
+		<string>Health reads your activity, heart, sleep and body data to show your rings, trends and scores.</string>
+		<key>NSHealthUpdateUsageDescription</key>
+		<string>Health saves the workouts and measurements you log so other apps can use them.</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Health records your route, distance and pace during outdoor workouts.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Health lets you add progress photos from your library. They are stored encrypted in the app only.</string>
+		<key>UIApplicationSceneManifest</key>
+		<dict>
+			<key>UIApplicationSupportsMultipleScenes</key>
+			<false/>
+			<key>UISceneConfigurations</key>
+			<dict>
+				<key>UIWindowSceneSessionRoleApplication</key>
+				<array>
+					<dict>
+						<key>UISceneClassName</key>
+						<string>UIWindowScene</string>
+						<key>UISceneConfigurationName</key>
+						<string>flutter</string>
+						<key>UISceneDelegateClassName</key>
+						<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+						<key>UISceneStoryboardFile</key>
+						<string>Main</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
+		<key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
+		<key>UIMainStoryboardFile</key>
+		<string>Main</string>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UISupportedInterfaceOrientations~ipad</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationPortraitUpsideDown</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UIStatusBarHidden</key>
+		<false/>
+		<key>NSSupportsLiveActivities</key>
+		<true/>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>health.untrustedtech.dev.widgets</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>health</string>
+				</array>
+			</dict>
+		</array>
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>location</string>
+		</array>
+	</dict>
+</plist>

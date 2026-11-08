@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_activity_description">Your Move, Exercise and Steps rings for today.</string>
+    <string name="widget_water_description">Today\'s water, with a +250 ml button.</string>
+    <string name="widget_fasting_description">Your fasting timer, counting live, with time to your goal.</string>
+    <string name="widget_workout_description">This week\'s workout minutes, with Run and Strength shortcuts.</string>
+    <string name="widget_progress_description">Your workout totals, week streak and recent activity.</string>
+</resources>

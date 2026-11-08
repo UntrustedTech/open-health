@@ -1,0 +1,67 @@
+# Builds an unsigned iPhone app (.ipa) on a GitHub macOS machine. Run it
+# from the Actions tab ("iOS build" → Run workflow), download the
+# Health-ios artifact, then sign and install it from any computer, e.g.
+# with xtool: `xtool install Health-unsigned.ipa`.
+name: iOS build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.1
+          channel: stable
+          cache: true
+
+      - name: Get packages
+        run: flutter pub get
+
+      # Home Screen widgets and the workout Live Activity: an app
+      # extension target, added here as there's no Mac to add it in Xcode.
+      - name: Add widget extension
+        run: |
+          # xcodeproj comes with CocoaPods; installed only if missing.
+          ruby -e "require 'xcodeproj'" 2>/dev/null || gem install --user-install xcodeproj
+          ruby ios/add_widget_extension.rb
+
+      - name: Build
+        run: flutter build ios --release --no-codesign
+
+      # Unsigned apps carry no entitlements, and signing tools like xtool
+      # only request the ones already in the app. An ad-hoc signature keeps
+      # HealthKit (Apple Health) in it; the real signing replaces it.
+      - name: Add entitlements
+        run: |
+          app=build/ios/iphoneos/Runner.app
+          for f in "$app"/Frameworks/*; do codesign --force --sign - "$f"; done
+          # The widgets share the app's App Group, so they need it too.
+          for x in "$app"/PlugIns/*.appex; do
+            codesign --force --sign - \
+              --entitlements ios/HealthWidgets/HealthWidgets.entitlements "$x"
+          done
+          codesign --force --sign - \
+            --entitlements ios/Runner/Runner.entitlements "$app"
+          codesign -d --entitlements - "$app"
+          ls "$app"/PlugIns
+
+      - name: Package .ipa
+        run: |
+          mkdir -p build/ipa/Payload
+          cp -R build/ios/iphoneos/Runner.app build/ipa/Payload/
+          cd build/ipa && zip -qry ../Health-unsigned.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Health-ios
+          path: build/Health-unsigned.ipa
+          retention-days: 1

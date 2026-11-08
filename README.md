@@ -24,15 +24,10 @@
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
 
-<p align="center">
-  <img src="docs/images/screens/summary.jpg" width="200" alt="Summary">
-  <img src="docs/images/screens/health.jpg" width="200" alt="Health">
-  <img src="docs/images/screens/fitness.jpg" width="200" alt="Fitness">
-  <img src="docs/images/screens/food.jpg" width="200" alt="Food">
-</p>
+<p align="center"><img src="docs/images/promo/banner.jpg" alt="Open Health: your health, without the cloud. Summary, Heart Trends and Sleep screens"></p>
 
 <p align="center">
-  <img src="docs/promo/health-promo.gif" width="720" alt="24-second promo: one day in the app, from the Summary and Readiness to a run, the calorie budget and Heart Trends">
+  <img src="docs/promo/health-promo.gif" width="720" alt="30-second promo: no account and no servers, then the Summary, Readiness, a run, food and Heart Trends, and the rest of the app">
   <br><sub><a href="https://github.com/UntrustedTech/open-health/raw/main/docs/promo/health-promo.mp4">Download the promo with sound (MP4)</a></sub>
 </p>
 
@@ -171,12 +166,10 @@ not a population average.
 
 ## Screenshots
 
-<p align="center">
-  <img src="docs/images/screens/strength.jpg" width="200" alt="Strength training">
-  <img src="docs/images/screens/run.jpg" width="200" alt="Outdoor run">
-  <img src="docs/images/screens/sleep.jpg" width="200" alt="Sleep">
-  <img src="docs/images/screens/cycle.jpg" width="200" alt="Cycle tracking">
-</p>
+<p align="center"><img src="docs/images/promo/glance.jpg" alt="Summary, Readiness and Heart Trends screens"></p>
+<p align="center"><img src="docs/images/promo/train.jpg" alt="Outdoor run, strength training and Fitness screens"></p>
+<p align="center"><img src="docs/images/promo/more.jpg" alt="Food diary, Sleep and Habits screens"></p>
+<p align="center"><img src="docs/images/promo/light-and-dark.jpg" alt="The Summary in light and dark, and Heart Trends in light"></p>
 
 ## Download
 

@@ -2,7 +2,7 @@ name: health_app
 description: "A simple, modern personal health tracker"
 publish_to: 'none'
 
-version: 1.0.0+127
+version: 1.0.0+128
 
 environment:
   sdk: ^3.13.1

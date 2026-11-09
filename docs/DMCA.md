@@ -19,7 +19,7 @@ We respect the rights of others. If you believe that something in Health
 copyright, send a notice to our designated agent:
 
 **UntrustedTech, Copyright Agent**
-Email: **bp@untrustedtech.dev** (subject: "DMCA Notice")
+Email: **support@untrustedtech.dev** (subject: "DMCA Notice")
 
 Under the U.S. Digital Millennium Copyright Act (17 U.S.C. § 512(c)(3)), your
 notice must include:
@@ -70,7 +70,7 @@ If you find a copy or modified version of Health that:
 - uses the UntrustedTech name or the App's branding to pass itself off as
   ours,
 
-please tell us at **bp@untrustedtech.dev** with a link to it. We may
+please tell us at **support@untrustedtech.dev** with a link to it. We may
 ask the people distributing it to comply with the license and, where they
 don't, send takedown notices to the stores or hosts involved.
 

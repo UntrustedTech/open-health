@@ -9,7 +9,7 @@ import 'package:health_app/widgets/app_route.dart';
 import 'package:health_app/widgets/ios.dart';
 
 /// Where legal notices are sent.
-const legalContact = 'bp@untrustedtech.dev';
+const legalContact = 'support@untrustedtech.dev';
 
 /// A legal document in the app: the Terms of Use or the Copyright & DMCA
 /// Policy. Short versions of `docs/EULA.md` and `docs/DMCA.md`, which have

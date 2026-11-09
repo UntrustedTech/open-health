@@ -5,7 +5,7 @@ reports seriously.
 
 ## Reporting a vulnerability
 
-Please **don't** open a public issue. Email **bp@untrustedtech.dev** with
+Please **don't** open a public issue. Email **support@untrustedtech.dev** with
 the subject "Security", including:
 
 - what the problem is and what an attacker could do with it;

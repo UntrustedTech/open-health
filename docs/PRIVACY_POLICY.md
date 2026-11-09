@@ -9,7 +9,7 @@ phone, and the developer never receives it.**
 ## Who we are
 
 Health is developed by **UntrustedTech** ("we"). Contact:
-**bp@untrustedtech.dev**. Using the app is also covered by our
+**support@untrustedtech.dev**. Using the app is also covered by our
 [Terms of Use](EULA.md).
 
 ## What the app stores
@@ -139,7 +139,7 @@ or to files you export, may be able to see it.
 Laws such as the GDPR and CCPA give you rights to access, correct, delete
 and move your personal data. With Health you can do all of this yourself in
 the app (view, edit, export and Erase All Data), because we don't hold a
-copy. Questions: **bp@untrustedtech.dev**.
+copy. Questions: **support@untrustedtech.dev**.
 
 ## Security
 

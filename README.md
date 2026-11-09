@@ -269,7 +269,7 @@ Health's source code is available under the
 
 The [LICENSE](LICENSE) file is the full, binding text; this summary isn't.
 It comes as is, without warranty. For commercial licensing, contact
-bp@untrustedtech.dev.
+support@untrustedtech.dev.
 
 "UntrustedTech", and the app's published name and icon, identify official
 releases. The license doesn't cover them, so copies and changed versions

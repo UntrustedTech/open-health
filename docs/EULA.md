@@ -11,7 +11,7 @@ If you do not agree, do not use the App.
 **Please read section 13 carefully: it limits how disputes are resolved,
 including a waiver of class actions and jury trials where the law allows.**
 
-Contact: **bp@untrustedtech.dev**
+Contact: **support@untrustedtech.dev**
 
 ## 1. Source code license
 
@@ -200,7 +200,7 @@ cannot be waived.
 ## 13. Disputes
 
 **Talk to us first.** Before starting any formal claim, you agree to
-contact us at bp@untrustedtech.dev and try to resolve the dispute
+contact us at support@untrustedtech.dev and try to resolve the dispute
 informally for at least 60 days.
 
 **Where.** If it isn't resolved, disputes will be decided only in the state
@@ -254,4 +254,4 @@ copyright, see our [Copyright & DMCA Policy](DMCA.md).
 
 ## 17. Contact
 
-Questions about these Terms, or legal notices: **bp@untrustedtech.dev**
+Questions about these Terms, or legal notices: **support@untrustedtech.dev**

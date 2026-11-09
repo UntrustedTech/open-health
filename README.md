@@ -185,8 +185,6 @@ release, open it, and allow installing from your browser or file manager
 when Android asks. To get updates automatically, add this repository to
 [Obtainium](https://github.com/ImranR98/Obtainium).
 
-Each release lists the APK's SHA-256 checksum so you can check your download.
-
 **Google Play beta:** Health is coming to Google Play soon. Want to test it
 there before it launches? Email **support@untrustedtech.dev** to join the beta.
 

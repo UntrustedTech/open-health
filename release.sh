@@ -8,10 +8,10 @@ set -euo pipefail
 cd "$(dirname "$0")"
 export PATH="$HOME/flutter/bin:$PATH"
 
-# Builds go to ../Build (shared with the other version of Health) when
+# Builds go to ../Build or ../../Build (shared with the other version of Health) when
 # that folder exists, otherwise to release/.
 RELEASE_DIR=release
-[[ -d ../Build ]] && RELEASE_DIR=../Build
+for d in ../../Build ../Build; do [[ -d $d ]] && RELEASE_DIR=$d; done
 OLD_DIR=$RELEASE_DIR/old
 NEW_VERSION_FILE=release/new.version
 BUILT_APK=build/app/outputs/flutter-apk/app-release.apk

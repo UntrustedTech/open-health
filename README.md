@@ -177,7 +177,7 @@ not a population average.
 |---|---|---|
 | **Android** (8.0+) | [GitHub Releases](https://github.com/untrustedtech/open-health/releases/latest) | Available |
 | **iOS** | GitHub Releases | Coming soon |
-| **Android** | Google Play | Planned |
+| **Android** | Google Play | Coming soon |
 | **iOS** | App Store | Planned |
 
 **Installing from GitHub:** download `Health-<version>.apk` from the latest
@@ -186,6 +186,9 @@ when Android asks. To get updates automatically, add this repository to
 [Obtainium](https://github.com/ImranR98/Obtainium).
 
 Each release lists the APK's SHA-256 checksum so you can check your download.
+
+**Google Play beta:** Health is coming to Google Play soon. Want to test it
+there before it launches? Email **support@untrustedtech.dev** to join the beta.
 
 ## In the works
 
@@ -197,7 +200,8 @@ These are being worked on and aren't in this version yet:
 - **Themes and app icons:** extra styles for the whole app, a theme
   editor and more Home Screen icons.
 - **iOS release:** an iPhone build on GitHub Releases.
-- **Google Play and the App Store.**
+- **Google Play** (coming soon; email support@untrustedtech.dev to join
+  the beta) **and the App Store.**
 
 Ideas and requests are welcome in [Issues](https://github.com/untrustedtech/open-health/issues).
 

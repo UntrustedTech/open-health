@@ -26,16 +26,21 @@ class AppUpdate {
   /// this phone.
   final Uri url;
 
-  /// Reads GitHub's latest release: its tag (`v1.0.0+99`, `1.0.0-99`)
-  /// gives the version and build, and the asset for [platform] the link.
+  /// Reads GitHub's latest release: its tag (`v1.0.0`, `v1.0.0+99`,
+  /// `1.0.0-99`) gives the version, the tag or a hidden `<!-- build 99 -->`
+  /// in the notes the build, and the asset for [platform] the link.
   /// Null if it can't be read.
   static AppUpdate? fromRelease(Object? json, TargetPlatform platform) {
     if (json is! Map<String, Object?>) return null;
     if (json['draft'] == true || json['prerelease'] == true) return null;
     final tag = json['tag_name'];
     if (tag is! String) return null;
-    final m = RegExp(r'(\d+\.\d+\.\d+)[+\-_ ](\d+)').firstMatch(tag);
-    final build = int.tryParse(m?.group(2) ?? '');
+    final m = RegExp(r'(\d+\.\d+\.\d+)(?:[+\-_ ](\d+))?').firstMatch(tag);
+    final body = json['body'];
+    final hidden = body is String
+        ? RegExp(r'<!--\s*build\s+(\d+)\s*-->').firstMatch(body)?.group(1)
+        : null;
+    final build = int.tryParse(m?.group(2) ?? hidden ?? '');
     if (m == null || build == null) return null;
     final ext = platform == TargetPlatform.iOS ? '.ipa' : '.apk';
     Uri? asset;
@@ -72,7 +77,8 @@ class AppUpdate {
 }
 
 /// Checks GitHub for a newer build of the app (GitHub version only; see
-/// [kStoreEdition]). Releases are tagged `v<version>+<build>` with the
+/// [kStoreEdition]). Releases are tagged `v<version>` (build in a hidden
+/// `<!-- build N -->` in the notes) or `v<version>+<build>`, with the
 /// APK and IPA attached; until there are any, it finds nothing.
 class UpdateChecker extends ChangeNotifier {
   UpdateChecker({

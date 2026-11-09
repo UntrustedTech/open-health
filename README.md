@@ -180,7 +180,7 @@ not a population average.
 | **Android** | Google Play | Planned |
 | **iOS** | App Store | Planned |
 
-**Installing from GitHub:** download `Health-<version>-<build>.apk` from the latest
+**Installing from GitHub:** download `Health-<version>.apk` from the latest
 release, open it, and allow installing from your browser or file manager
 when Android asks. To get updates automatically, add this repository to
 [Obtainium](https://github.com/ImranR98/Obtainium).

@@ -43,6 +43,21 @@ void main() {
       expect(u.url.path, endsWith('/releases/tag/1.2.0-120'));
     });
 
+    test('reads the build from hidden notes when the tag has none', () {
+      final json = {
+        ..._release('v1.0.0', files: ['Health-1.0.0.apk']),
+        'body': 'Open Health 1.0.0\n\n<!-- build 128 -->\n',
+      };
+      final u = AppUpdate.fromRelease(json, TargetPlatform.android)!;
+      expect(u.version, '1.0.0');
+      expect(u.build, 128);
+      expect(u.url.path, endsWith('Health-1.0.0.apk'));
+      expect(
+        AppUpdate.fromRelease(_release('v1.0.0'), TargetPlatform.android),
+        isNull,
+      );
+    });
+
     test('ignores drafts, bad tags and links off GitHub', () {
       expect(
         AppUpdate.fromRelease({

@@ -190,7 +190,8 @@ there before it launches? Email **support@untrustedtech.dev** to join the beta.
 
 ## In the works
 
-These are being worked on and aren't in this version yet:
+These are being worked on and aren't in this version yet. See the
+[roadmap](docs/ROADMAP.md) for the order.
 
 - **Plugin support:** small add-ons that bring new features, such as
   reading a watch or sensor directly, each running sandboxed with only
